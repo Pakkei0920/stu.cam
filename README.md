@@ -10,7 +10,7 @@
   ![test](https://github.com/Pakkei0920/stu.cam/assets/106027537/d35f6590-5c74-4b1b-9693-a2fbc7c3fc59)
 
   <p>Q&A:
-  1.因可能多次訪問監控畫面內容，或網絡不穩定會導致出現獲取圖片失敗而報錯解決方法？
+  <p>1.因可能多次訪問監控畫面內容，或網絡不穩定會導致出現獲取圖片失敗而報錯解決方法？
     <p>如果出現錯誤，例如圖片保存失敗(下圖)導致無法運作會跳出While循環，但同時會接入HTML的<meta http-equiv="refresh" content="0.5">。
     <p>瀏覽器會自動刷新網頁，需要注意的是PHP需要設置時間間距，不然會不斷dos他方服務器。
     ![QQ拼音截图20231111211536](https://github.com/Pakkei0920/stu.cam/assets/106027537/14878e70-311f-4fea-afcf-ea561cd7f3e0)
