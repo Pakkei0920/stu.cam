@@ -1,29 +1,41 @@
 <?php
 while (true) {
-date_default_timezone_set('Asia/Taipei'); // 设置时区
+    date_default_timezone_set('Asia/Taipei');
 
-$remoteImageUrl = 'http://wait.stu.edu.tw/ramdisk/push/xxx-6.jpg';
-$imageData = file_get_contents($remoteImageUrl);
+    $remoteImageUrl = 'http://wait.stu.edu.tw/ramdisk/push/xxx-6.jpg';
+    $imageData = file_get_contents($remoteImageUrl);
 
-if ($imageData !== false) {
-    $fileName = date('Ymd_His') . '.jpg';
-    $savePath = 'CAM-6/';
-    $saveFullPath = $savePath . $fileName;
-    $saveResult = file_put_contents($saveFullPath, $imageData);
-//--//
-    usleep(500000);//ms
-    $image = imagecreatefromjpeg($saveFullPath);
-    $watermarkText = date('Y-m-d H:i:s');
-    $textColor = imagecolorallocate($image, 255, 255, 255);
-    $fontSize = 40;
-    imagestring($image, $fontSize, imagesx($image) - "0" - $fontSize * strlen($watermarkText), imagesy($image) - "550", $watermarkText, $textColor);
-    imagejpeg($image, $savePath . "t-".$fileName); // 如果要保存图像，请取消注释此行
-    imagedestroy($image); //释放
-//--/
-    unlink($saveFullPath);
-}
-else {
-    echo "error";
-}
+    if ($imageData !== false) {
+        $fileName = date('Ymd_His') . '.jpg';
+        $savePath = 'CAM-6/';
+        $saveFullPath = $savePath . $fileName;
+
+        // Save the image file
+        $saveResult = file_put_contents($saveFullPath, $imageData);
+
+        if ($saveResult !== false) {
+            usleep(500000); // Adjust this value based on your needs
+
+            // Create image from the saved file
+            $image = imagecreatefromjpeg($saveFullPath);
+
+            // Add watermark
+            $watermarkText = date('Y-m-d H:i:s');
+            $textColor = imagecolorallocate($image, 255, 255, 255);
+            $fontSize = 40;
+            imagestring($image, $fontSize, imagesx($image) - $fontSize * strlen($watermarkText), imagesy($image) - 550, $watermarkText, $textColor);
+
+            // Save the modified image
+            imagejpeg($image, $savePath . "t-" . $fileName);
+            imagedestroy($image);
+
+            // Delete the original image file
+            unlink($saveFullPath);
+        } else {
+            echo "Error saving the image file.";
+        }
+    } else {
+        echo "Error fetching the remote image.";
+    }
 }
 ?>
