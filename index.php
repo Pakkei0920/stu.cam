@@ -1,8 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0.5"> <!-- Refresh every 0.5 seconds -->
+    <title>Auto Refresh </title>
+</head>
+<body>
+    <h1>This is a page that auto-refreshes every 0.5 seconds</h1>
+</body>
+</html>
+
 <?php
 while (true) {
     date_default_timezone_set('Asia/Taipei');
 
-    $remoteImageUrl = 'http://wait.stu.edu.tw/ramdisk/push/xxx-6.jpg';
+    $remoteImageUrl = "http://wait.stu.edu.tw/ramdisk/push/xxx-6.jpg";
     $imageData = file_get_contents($remoteImageUrl);
 
     if ($imageData !== false) {
