@@ -3,6 +3,9 @@
   <p>版權基於原網站創作人，本專案無意侵權，依著配合著作權人之通知會立即取下涉嫌侵權之內容。
   <p>原代碼僅供學術研究、學習及教學用途。
 
+<p>專題網站：
+<p>https://loop.paki91.com/CAM-6/index2.php
+  
   流程圖：
   ![loop paki91 com](https://github.com/Pakkei0920/stu.cam/assets/106027537/ebb289c2-12b7-4d8b-bec0-e1661b87c3e4)
 
