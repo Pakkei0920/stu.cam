@@ -2,11 +2,17 @@
     $imageDirectory = __DIR__ . '/';
     $outputVideo = 'output.mp4';
 
-    // Build FFmpeg command
-    $cmd = "ffmpeg -framerate 10 -pattern_type glob -i '{$imageDirectory}t-20231111_*.jpg' -c:v libx264 -r 30 -pix_fmt yuv420p {$outputVideo}";
+    // Check if form is submitted
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Get the value from the input field
+        $dateVariable = $_POST['dateVariable'];
 
-    // Execute the command
-    $output = shell_exec($cmd);
+        // Build FFmpeg command using the provided date variable
+        $cmd = "ffmpeg -framerate 10 -pattern_type glob -i '{$imageDirectory}t-{$dateVariable}_*.jpg' -c:v libx264 -r 30 -pix_fmt yuv420p {$outputVideo}";
+
+        // Execute the command
+        $output = shell_exec($cmd);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +25,25 @@
 </head>
 <body>
 
-<video id="player" controls>
-    <source src="output.mp4" type="video/mp4">
-</video>
+<!-- Form to input date variable -->
+<form method="post">
+    <label for="dateVariable">Enter Date Variable (e.g., 20231101): </label>
+    <input type="text" id="dateVariable" name="dateVariable" required>
+    <button type="submit">Generate Video</button>
+</form>
 
-<script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const player = new Plyr('#player');
-    });
-</script>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+    <!-- Display video if form is submitted -->
+    <video id="player" controls>
+        <source src="output.mp4" type="video/mp4">
+    </video>
+    <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = new Plyr('#player');
+        });
+    </script>
+<?php endif; ?>
 
 </body>
 </html>
