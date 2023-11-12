@@ -32,3 +32,6 @@
       
 ![QQ拼音截图20231111211536](https://github.com/Pakkei0920/stu.cam/assets/106027537/bb41c2d1-aab5-4389-b1b5-487f4e8936d5)
 
+![QQ拼音截图20231112121415](https://github.com/Pakkei0920/stu.cam/assets/106027537/9d977e69-7f2d-4dc4-8b6f-6ebb9a4dfb8b)
+
+
