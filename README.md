@@ -7,6 +7,7 @@
 
 <p>專題網站：
 <p>https://loop.paki91.com/CAM-6/index2.php
+<p>2023.11.13：https://loop.paki91.com/CAM-6/output_20231113.mp4
   
 ****
 
